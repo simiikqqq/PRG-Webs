@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vizitka</title>
+</head>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+  }
+
+  .vizitka {
+    position: relative;
+    width: 50%;
+    height: 40vh;
+    perspective: 1000px;
+    margin-left: -50px;
+    margin-right: -50px;
+  }
+
+  .predni_strana {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    background-color: #747171;
+    color: #ffffff;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    transform: rotateY(0deg);
+    transition: transform 1s;
+  }
+
+  .zadni_strana {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #747171;
+    color: #ffffff;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    transition: transform 1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .inromace {
+    margin-right: -175px;
+    margin-top: -50px;
+  }
+
+  .fotka_jmeno {
+    margin-left: -450px;
+    margin-top: 10px;
+  }
+
+  .fotka_jmeno img {
+    width: 230px;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
+    margin-top: 10px;
+  }
+
+  h1 {
+    margin-left: 25px;
+  }
+
+  .vizitka:hover .predni_strana {
+  transform: rotateY(180deg);
+  transition: transform 0.5s ease-in-out;
+}
+
+.vizitka:hover .zadni_strana {
+  transform: rotateY(0deg);
+  transition: transform 0.5s ease-in-out;
+}
+
+  .logo {
+  width: 425px;
+  height: 400px;
+  background-color: transparent;
+}
+
+</style>
+<body>
+  <div class="vizitka">
+    <div class="predni_strana">
+      <div class="inromace">
+        <h3>+420 123 456 789</h3>
+        <h3>simon.novak023@skolavdf.cz</h3>
+        <h3 onclick="window.location.href='https://github.com/simiikqqq'">simiikqqq.github.io</h3>
+        <h3>informační a komunikační technologie</h3>
+      </div>
+      <div class="fotka_jmeno">
+        <img src="image.png" alt="Moje fotka" title="Moje fotka">
+        <h1>Šimon Novák</h1>
+      </div>
+    </div>
+    <div class="zadni_strana">
+      <img class="logo" src="skolavdf_logo_vyska_bile.png" alt="Logo školy" title="Logo školy">
+    </div>
+  </div>
+</body>
+</html>
