@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid</title>
+</head>
+<style>
+    .container{
+        display: grid;       /*Sloupec*/
+        width: 80%;
+        height: 100vh;
+        margin: auto;
+        /*grid-template-columns: 1fr 1fr 1fr 1fr 1fr;*/ /*Nastavení sloupce, složitější zápis*/
+        grid-template-columns: repeat(5, 1fr);          /*Nastavení sloupce, jednodušší zápis*/
+        grid-template-rows: repeat(5, 1fr);             /*Nastavení řádku*/
+        column-gap: 10px;
+        row-gap: 10px;
+    }
+    .red{
+        background-color: red;
+        grid-column-start: 2;
+        grid-column-end: 6;
+    }
+    .blue{
+        background-color: blue;
+        grid-row-start: 1;
+        grid-row-end: 6;
+    }
+    .green{
+        background-color: green;
+        grid-column-start: 2;
+        grid-column-end: 6;
+        grid-row-start: 2;
+        grid-row-end: 6;
+        /*grid-area: 2/2/6/6; /*r-start/c-start/r-end/c-end*/
+    }
+</style>
+<body>
+    <div class="container"> 
+        <div class="red"></div>
+        <div class="blue"></div>
+        <div class="green"></div>
+    </div>
+</body>
+</html>
