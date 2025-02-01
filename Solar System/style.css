@@ -1,0 +1,212 @@
+body{
+    background-color: #000;
+    justify-content: center;
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sun{
+    background-color: yellow;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: rotate 10s linear infinite;
+    border-radius: 50%;
+    box-shadow:  0 0 10000px #fcb900;
+    
+}
+
+@keyframes rotate{
+0%{
+    transform: rotate(0deg);
+}
+100%{
+    transform: rotate(-360deg);
+}
+}
+
+.earth{
+background-color: #213fe9;
+width: 80px;
+height: 80px;
+border-radius: 50%;
+box-shadow: 0 0 30px #061985;
+top: 250%;
+display: flex;
+position: absolute;
+animation: rotate 11s linear infinite;
+}
+
+.secret-mercure{
+background-color: yellow;
+width: 50px;
+height: 50px;
+border-radius: 50%;
+display: flex;
+position: absolute;
+animation: rotate 5s linear infinite;
+}
+
+.mercure{
+background-color: rgb(219, 199, 159);
+width: 50px;
+height: 50px;
+border-radius: 50%;
+box-shadow: 0 0 30px #aaa9a9;
+top: 380%;
+display: flex;
+position: absolute;
+}
+
+.moon{
+background-color: white;
+width: 30px;
+height: 30px;
+border-radius: 50%;
+top: 110%;
+display: flex;
+position: absolute;
+box-shadow: 0 0 50px #fff;
+}
+
+.secret-venus{
+background-color: yellow;
+width: 90px;
+height: 90px;
+border-radius: 50%;
+display: flex;
+position: absolute;
+animation: rotate 7s linear infinite;
+}
+
+.venus{
+background-color: rgb(235, 95, 39);
+width: 90px;
+height: 90px;
+border-radius: 50%;
+box-shadow: 0 0 30px #ec3b0f;
+top: 330%;
+display: flex;
+position: absolute;
+}
+
+.star1{
+height: 10px;
+width: 10px;
+display: flex;
+top: 15%;
+left: 10%;
+position: absolute;
+background: #fff;
+box-shadow: 0 0 30px #fff;
+transform: rotate(-45deg);
+border-radius: 20% 30% 20% 30%;
+}
+
+.star2{
+height: 10px;
+width: 10px;
+display: flex;
+top: 85%;
+left: 15%;
+position: absolute;
+background: #fff;
+box-shadow: 0 0 30px #fff;
+transform: rotate(-45deg);
+border-radius: 20% 30% 20% 30%;
+}
+
+.star3{
+height: 10px;
+width: 10px;
+display: flex;
+top: 15%;
+right: 20%;
+position: absolute;
+background:  #fff;
+box-shadow: 0 0 30px #fff;
+transform: rotate(-45deg);
+border-radius: 20% 30% 20% 30%;
+}
+
+.star4{
+height: 10px;
+width: 10px;
+display: flex;
+top: 90%;
+right: 25%;
+position: absolute;
+background: #fff;
+box-shadow: 0 0 30px #fff;
+transform: rotate(-45deg);
+border-radius: 20% 30% 20% 30%;
+}
+
+.star5{
+height: 10px;
+width: 10px;
+display: flex;
+top: 40%;
+right: 5%;
+position: absolute;
+background: #fff;
+box-shadow: 0 0 30px #fff;
+transform: rotate(-45deg);
+border-radius: 20% 30% 20% 30%;
+}
+
+.star6{
+height: 10px;
+width: 10px;
+display: flex;
+top: 40%;
+left: 25%;
+position: absolute;
+background: #fff;
+box-shadow: 0 0 30px #fff;
+transform: rotate(-45deg);
+border-radius: 20% 30% 20% 30%;
+}
+
+.star7{
+height: 10px;
+width: 10px;
+display: flex;
+top: 15%;
+left: 45%;
+position: absolute;
+background: #fff;
+box-shadow: 0 0 30px #fff;
+transform: rotate(-45deg);
+border-radius: 20% 30% 20% 30%;
+}
+
+.star8{
+height: 10px;
+width: 10px;
+display: flex;
+top: 80%;
+left: 40%;
+position: absolute;
+background: #fff;
+box-shadow: 0 0 30px #fff;
+transform: rotate(-45deg);
+border-radius: 20% 30% 20% 30%;
+}
+
+.sun-animation{
+border-radius: 50%;   
+animation: rotate 10s linear infinite;
+background-color: yellow;
+width: 210px;
+height: 210px;
+}
