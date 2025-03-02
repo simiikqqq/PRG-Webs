@@ -1,0 +1,30 @@
+body {
+    color: #cef;
+    background-color: #234;
+  }
+  
+  button {
+    color: #234;
+    background-color: #cef;
+    border: none;
+    border-radius: 0.4em;
+    padding: 1em;
+    margin: 1em;
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+  button:hover {
+    background-color: #fff;
+  }
+  #container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .circle {
+    background: #f66;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 0.5em;
+  }
