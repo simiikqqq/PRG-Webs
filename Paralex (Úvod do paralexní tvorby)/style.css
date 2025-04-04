@@ -1,0 +1,42 @@
+body{
+    height: 200vh;
+}
+#container{
+    background-color: rgb(245, 222, 179);
+    width: 50%;
+    margin: auto;
+    padding: 35px 30px;
+    margin-top: 100px;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.container-two{
+    background-color: rgb(207, 186, 147);
+    width: 50%;
+    margin: auto;
+    padding: 35px 30px;
+    margin-top: 100px;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.container-three{
+    background-color: rgb(233, 194, 121);
+    width: 50%;
+    margin: auto;
+    padding: 35px 30px;
+    margin-top: 100px;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 10px;
+}
+h1{
+    font-size: 3em;
+    justify-content: center;
+    padding-top: 25px;
+
+}
+p{
+    font-size: 1.5em;
+}
