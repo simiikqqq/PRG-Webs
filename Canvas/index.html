@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>2D Canvas</title>
+    <style>
+      body {
+        background: black;
+      }
+      canvas {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #222;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="600" height="400"></canvas>
+    <script>
+      const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    // Nastavení stylů a barev
+    ctx.fillStyle = "rgb(150, 50, 50)"; // červená  (barva)
+    ctx.strokeStyle = "rgb(100, 100, 255)"; // modrá  (barva ohraničení)
+    ctx.lineWidth = 5;  // (tloštka line)
+
+    // Kreslení tvarů
+    ctx.beginPath();  // začni kreslit
+    ctx.rect(30, 50, 100, 150); // obdélník  (x, y, width, height)
+    ctx.fill();  // vypiš
+    ctx.stroke(); // vypiš čáru
+
+    ctx.beginPath();
+    ctx.arc(300, 200, 100, 0, 2 *  Math.PI); // kruh (x, y, velikost, 0, poloměr)
+    ctx.fillStyle = "rgb(50, 250, 100)"; // zelená
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(400, 50); // začátek čáry (px)
+    ctx.lineTo(550, 250); // konec čáry (px)
+    ctx.strokeStyle = "rgb(255, 255, 0)"; // žlutá
+    ctx.lineWidth = 5; // tlouška čáry
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.font = "42px Arial"; // font textu
+    ctx.textAlign = "center"; // pozice
+    ctx.textBaseline = "middle"; // pozice
+    ctx.fillStyle = "rgb(255, 100, 255)"; // fialová
+    ctx.fillText("VOŠ, SPŠ a SOŠ Varnsdorf", 300, 350); // text (x, y)
+
+    // Smyčka pro přidávání bodů
+    let y = 5; // výška prvního bodu
+    let intervalId = setInterval(() => {
+    ctx.beginPath();
+    ctx.arc(580, y, 5, 0, 2 * Math.PI); // kruhový bod
+    ctx.fillStyle = "rgb(255, 0, 0)";
+    ctx.fill();
+    y += 15; // posunutí dolů o 10 pixelů
+    if (y > 590) {
+     // pokud jsme dole, zastavíme smyčku
+        clearInterval(intervalId);  
+    }
+}, 1000); // 1 sekunda
+</script>
+</body>
+</html>
+
