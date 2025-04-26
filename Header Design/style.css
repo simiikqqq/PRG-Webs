@@ -1,0 +1,99 @@
+html, body{
+    margin: 0;
+    width: 100;
+}
+*{
+    box-sizing: border-box;
+}
+#ig, #fb{
+    width: 15%;
+}
+#logo{
+    width: 30%;
+}
+.top-nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgb(163, 238, 230);
+    color: #000;
+    height: 100px;
+    padding: 8px;
+}
+
+.menu{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    margin: 10px;
+    padding: 0;
+}
+
+.menu > li{
+    font-size: 2em;
+    margin: 0 1rem;
+    overflow: hidden;
+}
+
+.menu-button-container{
+    display: none;
+    height: 100%;
+    width: 80px;
+    cursor: pointer;
+}
+
+.menu-button, .menu-button::before, .menu-button::after{
+    display: block;
+    background-color: #fff;
+    position: absolute;
+    height: 40px;
+    width: 30px;
+    transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    border-radius: 2px;
+}
+
+.menu-button::before{
+    content: "";
+    margin-top: -8px;
+}
+
+.menu-button::after{
+    content: "";
+    margin-top: 8px;
+}
+
+@media (max-width: 700px) { 
+    .menu-button-container{
+        display: flex;
+    }
+
+    .menu{
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-top: 50px;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .menu li{
+        height: 40px;
+        margin: 10px;
+        padding: 0;
+        border: 10px;
+        transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);   
+    }   
+
+    .menu > li{
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 0.5em 0;
+        width: 20%;
+        color: #000;
+        margin-left: 80%;
+        background-color:rgb(163, 238, 230);
+    }
+}
