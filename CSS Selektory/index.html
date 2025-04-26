@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>                            
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selektory</title>   <!--CSSBattle-->
+</head>
+<style>
+    body{
+        background-color: #252525;
+    }
+    .parent-1 > *{
+        width: 200px;
+        height: 200px;
+        background-color: rgb(255,0,0);
+        border: 1px solid rgb(0,0,0);
+        display: inline-block;
+    }
+    .parent-1 > *:last-child{          /*První nebo poslední*/
+        background-color: rgb(0,230,0); 
+    }
+    .parent-1 > *:nth-child(2){        /*N-tý*/
+        background-color: rgb(0,230,0);
+    }
+    .parent-1 *:first-child +*{        /*První + ten další za nim*/
+        background-color: rgb(0,0,250);
+    }
+    .parent-1, .parent-2{
+        width: 100%;
+        min-height: 500px;
+        background-color: rgb(85, 118, 218);
+        border: 1px solid rgb(0,0,0);
+    }
+    .parent-1 > *:first-child ~ .potomek, .parent-1 > *:first-child{ /*alt+126*/
+        background-color: rgb(200,0,0);
+    }
+    .potomek:hover{
+        background-color: rgb(255,255,255) !important;
+    }
+    div:has(.potomek) {
+        background-color: rgb(61, 29, 61);
+    }
+    input:focus{
+        background-color: rgb(200,0,0);
+    }
+    input:checked{
+        border: 2px solid rgb(200,0,0);
+    }
+    .parent-2::before{
+        content: "";
+        background-color: rgb(100,200,220);
+        height: 50px;
+        width: 200px;
+        display: block;
+    }
+    
+</style>
+<body>
+    <div class="parent-1">
+        <div class="child">
+            <input type="text" id="text">
+            <input type="checkbox" id="checkbox">
+        </div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="potomek"></div>
+    </div>
+    <div class="parent-2">
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+    </div>
+</body>
+</html>
