@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jednostránkový web</title>
+</head>
+<body>
+  <h1 id="title">Vítejte na mém webu</h1>
+  <p id="description">Toto <br>je jednoduchý <br> jednostránkový web v češtině.</p>
+  <button id="translateBtn" onclick="toggleTranslation()">Přeložit do angličtiny</button>
+
+  <script>
+    const translations = {
+      "cs": {
+        "title": "Vítejte na mém webu",
+        "description": "Toto je jednoduchý jednostránkový web v češtině.",
+        "button": "Přeložit do angličtiny"
+      },
+      "en": {
+        "title": "Welcome to my website",
+        "description": "This is a simple one-page website in Czech.",
+        "button": "Přeložit do češtiny"
+      }
+    };
+
+    let currentLang = "cs";
+
+    function toggleTranslation() {
+      currentLang = currentLang === "cs" ? "en" : "cs";
+      document.getElementById("title").textContent = translations[currentLang]["title"];
+      document.getElementById("description").textContent = translations[currentLang]["description"];
+      document.getElementById("translateBtn").textContent = translations[currentLang]["button"];
+    }
+  </script>
+</body>
+</html>
