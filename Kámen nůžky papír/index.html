@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Kámen nůžky papír</title>
+</head>
+<body>
+    <h1>Kámen - Nůžky - Papír</h1>
+
+    <div class="choices">
+        <button onclick="playGame('kámen')">👊</button>
+        <button onclick="playGame('papír')">✋</button>
+        <button onclick="playGame('nůžky')">✌</button>
+    </div>
+
+    <div id="playerDisplay">Hráč: </div>
+    <div id="computerDisplay">Počítač: </div>
+    <div id="resultDisplay"></div>
+
+    <div class="scoreDisplay">Score Hráče:
+        <span id="playerScoreDisplay">0</span>
+    </div>
+
+    <div class="scoreDisplay">Score Počítače:
+        <span id="computerScoreDisplay">0</span>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
