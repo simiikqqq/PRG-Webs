@@ -1,0 +1,145 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #373737;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: sans-serif;
+}
+
+nav{
+    margin-bottom: 20px;
+}
+
+nav a{
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+
+}
+
+nav a:hover{
+    text-decoration: underline;
+}
+
+h1{
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+}
+
+h2{
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+#table{
+    background-color: #424242;
+    font-size: 1.2em;
+    text-align: center;
+    font-weight: bold;
+    padding: 16px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    box-shadow:  0 0 20px #000000;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td{
+    padding: 16px;
+}
+
+thead{
+    background-color: #505050;
+}
+
+tbody tr:nth-of-type(odd){
+    background-color: #2e2e2e;
+}
+
+tbody tr:nth-of-type(even){
+    background-color: #3f3f3f;
+}
+
+tbody tr:hover{
+    background-color: #505050;
+}
+
+tr input{
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #2e2e2e;
+    border: none;
+    color: #fff;
+}
+
+input{
+    width: 90%;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #2e2e2e;
+    border: none;
+    color: #fff;
+}
+
+#form{
+    background-color: #424242;
+    font-size: 1em;
+    text-align: center;
+    font-weight: bold;
+    padding: 16px;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow:  0 0 20px #000000;
+}
+
+.optionSelect{
+    position: relative;
+    padding: 5px;
+}
+
+select{
+    background-color: #2e2e2e;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1em;
+    width: 100%;
+}
+
+select option{
+    position: absolute;
+    background-color: #2e2e2e;
+    border: none;
+    color: #fff;
+}
+
+button{
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #2e2e2e;
+    border: none;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover{
+    background-color: #535353;
+}
+
+hr{
+    width: 100%;
+}

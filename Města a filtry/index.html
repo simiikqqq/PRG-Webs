@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Filtrovani</title>
+</head>
+<body>
+    <h1>Ukázka filtrování dat</h1>
+    <nav>
+        <a href="#table">Tabulka</a>
+        <a href="#form">Formulář</a>
+    </nav>
+    <section id="table">
+        <h2>Tabulka</h2>
+        <hr>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Město
+                    <input id="searchCity" type="text" placeholder="Zadej město:">
+                    </th>
+                    <th>Počet obyvatel</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <tr>
+                    <td>1</th>
+                    <td>Praha</td>
+                    <td>1,000,000</td>
+                </tr>
+                <tr>
+                    <td>2</th>
+                    <td>Brno</td>
+                    <td>800,000</td>
+                </tr>
+                <tr>
+                    <th>3</th>
+                    <td>Ostrava</td>
+                    <td>700,000</td>
+                </tr>
+                <tr>
+                    <td>4</th>
+                    <td>Olomouc</td>
+                    <td>600,000</td>
+                </tr>
+                <tr>
+                    <td>5</th>
+                    <td>České Budějovice</td>
+                    <td>500,000</td>
+                </tr>
+                <tr>
+                    <td>6</th>
+                    <td>Liberec</td>
+                    <td>400,000</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>  
+    <section id="form">
+        <h2>Formulář</h2>
+        <hr>
+        <input id="filterCity" type="text" placeholder="Zadej město:" onkeyup="filterSelect()">
+        <div class="optionSelect" style="width: 500px;"></div>
+            <select id="selectCity">
+                <option>Praha</option>
+                <option>Brno</option>
+                <option>Ostrava</option>
+                <option>Olomouc</option>
+                <option>České Budějovice</option>
+                <option>Liberec</option>
+            </select>
+        <button type="submit" onclick="submit()">Odeslat</button>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
