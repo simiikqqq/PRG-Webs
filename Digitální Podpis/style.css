@@ -1,0 +1,6 @@
+body { font-family: 'Inter', system-ui, sans-serif; }
+    .document-area {
+      font-family: 'Georgia', serif;
+      line-height: 1.8;
+      white-space: pre-wrap;
+    }
