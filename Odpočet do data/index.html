@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Odpočet do data</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:#0e1020;color:#e8eaf6;font:16px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif;display:grid;place-items:center;padding:1.2rem}
+main{width:min(100%,560px)}h1{font-size:1.7rem;margin:0 0 .3rem}p.sub{color:#9aa0c8;margin:0 0 1.2rem}
+button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:.65rem 1.1rem;background:#62c9d9;color:#07161a;font-weight:700}
+button:hover{filter:brightness(1.1)}input,select{width:100%;padding:.65rem .8rem;border-radius:10px;border:1.5px solid #2b2f55;background:#151834;color:inherit}
+label{display:block;margin:.8rem 0 .3rem;color:#9aa0c8;font-size:.9rem}.card{background:#151834;border:1.5px solid #2b2f55;border-radius:16px;padding:1.2rem}
+.big{font-size:2.2rem;font-weight:800;text-align:center;margin:.6rem 0}.muted{color:#9aa0c8}.row{display:flex;gap:.6rem;flex-wrap:wrap}.row>*{flex:1}
+:focus-visible{outline:3px solid #62c9d9;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation-duration:6s!important;transition:none!important}}
+
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin-top:1rem}.cell{text-align:center;background:#151834;border:1.5px solid #2b2f55;border-radius:14px;padding:1rem .3rem}
+.cell b{display:block;font-size:2rem;font-variant-numeric:tabular-nums}.cell span{font-size:.8rem;color:#9aa0c8}
+</style>
+</head>
+<body>
+<main><h1>Odpočet do data</h1><p class="sub">Vyber datum a podívej se, kolik času zbývá.</p>
+<label for="d">Datum</label><input type="date" id="d">
+<div class="grid"><div class="cell"><b id="dd">0</b><span>dní</span></div><div class="cell"><b id="hh">0</b><span>hodin</span></div><div class="cell"><b id="mm">0</b><span>minut</span></div><div class="cell"><b id="ss">0</b><span>sekund</span></div></div>
+<p class="muted" id="msg" style="text-align:center"></p></main>
+<script>
+const d=document.getElementById("d"),p=n=>String(n).padStart(2,"0");
+const now=new Date();let t=new Date(now.getFullYear(),11,24);if(t<now)t=new Date(now.getFullYear()+1,11,24);
+d.value=`${t.getFullYear()}-${p(t.getMonth()+1)}-${p(t.getDate())}`;
+function tick(){const target=new Date(d.value+"T00:00:00"),diff=target-new Date();
+ if(isNaN(diff)){msg.textContent="Vyber platné datum.";return}
+ if(diff<=0){["dd","hh","mm","ss"].forEach(i=>document.getElementById(i).textContent="0");msg.textContent="Tohle datum už nastalo.";return}
+ msg.textContent="Do "+target.toLocaleDateString("cs-CZ");
+ const s=Math.floor(diff/1000);dd.textContent=Math.floor(s/86400);hh.textContent=p(Math.floor(s%86400/3600));mm.textContent=p(Math.floor(s%3600/60));ss.textContent=p(s%60)}
+d.oninput=tick;tick();setInterval(tick,1000);</script>
+</body>
+</html>
