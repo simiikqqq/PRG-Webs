@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hádej barvu</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:#0e1020;color:#e8eaf6;font:16px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif;display:grid;place-items:center;padding:1.2rem}
+main{width:min(100%,560px)}h1{font-size:1.7rem;margin:0 0 .3rem}p.sub{color:#9aa0c8;margin:0 0 1.2rem}
+button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:.65rem 1.1rem;background:#62c9d9;color:#07161a;font-weight:700}
+button:hover{filter:brightness(1.1)}input,select{width:100%;padding:.65rem .8rem;border-radius:10px;border:1.5px solid #2b2f55;background:#151834;color:inherit}
+label{display:block;margin:.8rem 0 .3rem;color:#9aa0c8;font-size:.9rem}.card{background:#151834;border:1.5px solid #2b2f55;border-radius:16px;padding:1.2rem}
+.big{font-size:2.2rem;font-weight:800;text-align:center;margin:.6rem 0}.muted{color:#9aa0c8}.row{display:flex;gap:.6rem;flex-wrap:wrap}.row>*{flex:1}
+:focus-visible{outline:3px solid #62c9d9;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation-duration:6s!important;transition:none!important}}
+
+.sw{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:1rem 0}.sw button{height:90px;border:3px solid transparent;border-radius:14px}
+.sw button.ok{border-color:#fff}.sw button.bad{opacity:.35}
+</style>
+</head>
+<body>
+<main><h1>Hádej barvu</h1><p class="sub">Která barva odpovídá zadanému RGB kódu?</p>
+<p class="big" id="code" style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:1.6rem">—</p>
+<div class="sw" id="sw"></div><p style="text-align:center;min-height:1.6em" id="msg"></p>
+<div class="row"><div class="card" style="text-align:center">Série<br><b id="s">0</b></div><div class="card" style="text-align:center">Rekord<br><b id="b">0</b></div></div>
+<p style="text-align:center"><button id="n" hidden>Další kolo</button></p></main>
+<script>
+const st={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+let streak=0,best=+st.get("hb")||0,locked=false;const R=()=>Math.floor(Math.random()*256);
+document.getElementById("b").textContent=best;
+function round(){locked=false;n.hidden=true;msg.textContent="";const cols=[];
+ while(cols.length<4){const c=[R(),R(),R()];if(cols.every(o=>Math.abs(o[0]-c[0])+Math.abs(o[1]-c[1])+Math.abs(o[2]-c[2])>90))cols.push(c)}
+ const ans=Math.floor(Math.random()*4);code.textContent=`rgb(${cols[ans].join(", ")})`;
+ sw.innerHTML="";cols.forEach((c,i)=>{const b=document.createElement("button");b.style.background=`rgb(${c})`;b.setAttribute("aria-label","Barva "+(i+1));
+  b.onclick=()=>{if(locked)return;locked=true;const good=i===ans;
+   [...sw.children].forEach((x,j)=>x.className=j===ans?"ok":"bad");
+   if(good){streak++;msg.textContent="Správně!"}else{streak=0;msg.textContent="Vedle. Správná je ta označená bílým rámečkem."}
+   s.textContent=streak;if(streak>best){best=streak;document.getElementById("b").textContent=best;st.set("hb",best)}n.hidden=false;n.focus()};sw.append(b)})}
+n.onclick=round;round();</script>
+</body>
+</html>
