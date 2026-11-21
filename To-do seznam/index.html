@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>To-do seznam</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:#0e1020;color:#e8eaf6;font:16px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif;display:grid;place-items:center;padding:1.2rem}
+main{width:min(100%,560px)}h1{font-size:1.7rem;margin:0 0 .3rem}p.sub{color:#9aa0c8;margin:0 0 1.2rem}
+button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:.65rem 1.1rem;background:#62c9d9;color:#07161a;font-weight:700}
+button:hover{filter:brightness(1.1)}input,select{width:100%;padding:.65rem .8rem;border-radius:10px;border:1.5px solid #2b2f55;background:#151834;color:inherit}
+label{display:block;margin:.8rem 0 .3rem;color:#9aa0c8;font-size:.9rem}.card{background:#151834;border:1.5px solid #2b2f55;border-radius:16px;padding:1.2rem}
+.big{font-size:2.2rem;font-weight:800;text-align:center;margin:.6rem 0}.muted{color:#9aa0c8}.row{display:flex;gap:.6rem;flex-wrap:wrap}.row>*{flex:1}
+:focus-visible{outline:3px solid #62c9d9;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation-duration:6s!important;transition:none!important}}
+
+form{display:flex;gap:.6rem;margin-bottom:1rem}form input{flex:1}ul{list-style:none;padding:0;margin:0;display:grid;gap:.5rem}
+li{display:flex;align-items:center;gap:.7rem;background:#151834;border:1.5px solid #2b2f55;border-radius:12px;padding:.6rem .8rem}
+li input{width:auto}li span{flex:1;word-break:break-word}li.done span{text-decoration:line-through;color:#6c7199}.x{background:transparent;color:#9aa0c8;padding:.2rem .5rem}.x:hover{color:#ff7a90}
+</style>
+</head>
+<body>
+<main><h1>To-do seznam</h1><p class="sub">Úkoly se ukládají v tvém prohlížeči (localStorage).</p>
+<form id="f"><input id="in" placeholder="Co je potřeba udělat?" aria-label="Nový úkol" maxlength="120"><button>Přidat</button></form>
+<ul id="list"></ul><p class="muted" id="cnt"></p></main>
+<script>
+const st={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+const KEY="todo-v1";let items=[];try{items=JSON.parse(st.get(KEY)||"[]")}catch(e){}
+const ul=document.getElementById("list"),inp=document.getElementById("in"),cnt=document.getElementById("cnt");
+function save(){st.set(KEY,JSON.stringify(items))}
+function draw(){ul.innerHTML="";items.forEach((t,i)=>{const li=document.createElement("li");if(t.done)li.className="done";
+ const cb=document.createElement("input");cb.type="checkbox";cb.checked=t.done;cb.setAttribute("aria-label","Hotovo");cb.onchange=()=>{t.done=cb.checked;save();draw()};
+ const sp=document.createElement("span");sp.textContent=t.text;
+ const x=document.createElement("button");x.textContent="✕";x.className="x";x.setAttribute("aria-label","Smazat");x.onclick=()=>{items.splice(i,1);save();draw()};
+ li.append(cb,sp,x);ul.append(li)});
+ const left=items.filter(t=>!t.done).length;cnt.textContent=items.length?`Zbývá: ${left} z ${items.length}`:"Zatím nic. Přidej první úkol."}
+document.getElementById("f").onsubmit=e=>{e.preventDefault();const v=inp.value.trim();if(!v)return;items.push({text:v,done:false});inp.value="";save();draw()};
+draw();</script>
+</body>
+</html>
