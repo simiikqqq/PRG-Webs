@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dělení účtu</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:#0e1020;color:#e8eaf6;font:16px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif;display:grid;place-items:center;padding:1.2rem}
+main{width:min(100%,560px)}h1{font-size:1.7rem;margin:0 0 .3rem}p.sub{color:#9aa0c8;margin:0 0 1.2rem}
+button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:.65rem 1.1rem;background:#62c9d9;color:#07161a;font-weight:700}
+button:hover{filter:brightness(1.1)}input,select{width:100%;padding:.65rem .8rem;border-radius:10px;border:1.5px solid #2b2f55;background:#151834;color:inherit}
+label{display:block;margin:.8rem 0 .3rem;color:#9aa0c8;font-size:.9rem}.card{background:#151834;border:1.5px solid #2b2f55;border-radius:16px;padding:1.2rem}
+.big{font-size:2.2rem;font-weight:800;text-align:center;margin:.6rem 0}.muted{color:#9aa0c8}.row{display:flex;gap:.6rem;flex-wrap:wrap}.row>*{flex:1}
+:focus-visible{outline:3px solid #62c9d9;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation-duration:6s!important;transition:none!important}}
+
+.out{display:grid;gap:.4rem;margin-top:1rem}.out div{display:flex;justify-content:space-between;color:#9aa0c8}.out b{color:#e8eaf6}
+</style>
+</head>
+<body>
+<main><h1>Dělení účtu</h1><p class="sub">Spočítej spropitné a kolik zaplatí každý z party.</p>
+<div class="card"><label for="bill">Účet (Kč)</label><input id="bill" type="number" min="0" step="1" value="1200" inputmode="decimal">
+<label for="tip">Spropitné: <b id="tv">10</b> %</label><input id="tip" type="range" min="0" max="25" value="10">
+<label for="ppl">Počet lidí</label><input id="ppl" type="number" min="1" max="50" value="4" inputmode="numeric">
+<div class="out"><div><span>Spropitné</span><b id="o1">—</b></div><div><span>Celkem</span><b id="o2">—</b></div></div>
+<p class="muted" style="margin:.8rem 0 0;text-align:center">Na osobu</p><p class="big" id="o3" style="margin-top:0">—</p></div></main>
+<script>
+const f=n=>n.toLocaleString("cs-CZ",{style:"currency",currency:"CZK",maximumFractionDigits:0});
+function calc(){const b=Math.max(0,+bill.value||0),t=+tip.value,n=Math.max(1,Math.floor(+ppl.value)||1),tp=b*t/100,all=b+tp;
+ tv.textContent=t;o1.textContent=f(tp);o2.textContent=f(all);o3.textContent=f(all/n)}
+["bill","tip","ppl"].forEach(i=>document.getElementById(i).oninput=calc);calc();</script>
+</body>
+</html>
