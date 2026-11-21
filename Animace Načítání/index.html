@@ -1,1 +1,43 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Animace načítání</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:#0e1020;color:#e8eaf6;font:16px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif;display:grid;place-items:center;padding:1.2rem}
+main{width:min(100%,560px)}h1{font-size:1.7rem;margin:0 0 .3rem}p.sub{color:#9aa0c8;margin:0 0 1.2rem}
+button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:.65rem 1.1rem;background:#62c9d9;color:#07161a;font-weight:700}
+button:hover{filter:brightness(1.1)}input,select{width:100%;padding:.65rem .8rem;border-radius:10px;border:1.5px solid #2b2f55;background:#151834;color:inherit}
+label{display:block;margin:.8rem 0 .3rem;color:#9aa0c8;font-size:.9rem}.card{background:#151834;border:1.5px solid #2b2f55;border-radius:16px;padding:1.2rem}
+.big{font-size:2.2rem;font-weight:800;text-align:center;margin:.6rem 0}.muted{color:#9aa0c8}.row{display:flex;gap:.6rem;flex-wrap:wrap}.row>*{flex:1}
+:focus-visible{outline:3px solid #62c9d9;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation-duration:6s!important;transition:none!important}}
+
+main{width:min(100%,720px)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem}
+.box{height:140px;display:grid;place-items:center;background:#151834;border:1.5px solid #2b2f55;border-radius:16px;position:relative}.box span{position:absolute;bottom:.5rem;font-size:.75rem;color:#9aa0c8}
+.spin{width:40px;height:40px;border:4px solid #2b2f55;border-top-color:#62c9d9;border-radius:50%;animation:rot 1s linear infinite}@keyframes rot{to{transform:rotate(360deg)}}
+.dots{display:flex;gap:8px}.dots i{width:12px;height:12px;border-radius:50%;background:#62c9d9;animation:bounce 1s infinite ease-in-out}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}@keyframes bounce{0%,80%,100%{transform:translateY(0);opacity:.4}40%{transform:translateY(-14px);opacity:1}}
+.bars{display:flex;gap:5px;align-items:center;height:44px}.bars i{width:7px;height:10px;background:#c96fb4;animation:bar 1s infinite ease-in-out;animation-delay:calc(var(--i)*.1s)}
+@keyframes bar{0%,100%{height:10px}50%{height:42px}}
+.pulse{width:40px;height:40px;border-radius:50%;background:#8b7fd6;animation:pul 1.2s infinite}@keyframes pul{0%{transform:scale(.5);opacity:1}100%{transform:scale(1.4);opacity:0}}
+.flip{width:36px;height:36px;background:#62c9d9;animation:fl 1.4s infinite}@keyframes fl{50%{transform:rotate(180deg) scale(.5);border-radius:50%}100%{transform:rotate(360deg)}}
+.prog{width:110px;height:8px;border-radius:99px;background:#2b2f55;overflow:hidden}.prog i{display:block;height:100%;width:40%;background:#62c9d9;border-radius:99px;animation:slide 1.2s infinite ease-in-out}
+@keyframes slide{0%{margin-left:-40%}100%{margin-left:100%}}
+</style>
+</head>
+<body>
+<main><h1>Animace načítání</h1><p class="sub">Šest loaderů vytvořených jen pomocí CSS (@keyframes). Bez JavaScriptu.</p>
+<div class="grid">
+<div class="box"><div class="spin"></div><span>kroužek</span></div>
+<div class="box"><div class="dots"><i></i><i></i><i></i></div><span>tečky</span></div>
+<div class="box"><div class="bars"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i></div><span>sloupce</span></div>
+<div class="box"><div class="pulse"></div><span>pulz</span></div>
+<div class="box"><div class="flip"></div><span>otáčení</span></div>
+<div class="box"><div class="prog"><i></i></div><span>lišta</span></div>
+</div></main>
+
+</body>
+</html>
 
