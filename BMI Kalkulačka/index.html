@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BMI kalkulačka</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:#0e1020;color:#e8eaf6;font:16px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif;display:grid;place-items:center;padding:1.2rem}
+main{width:min(100%,560px)}h1{font-size:1.7rem;margin:0 0 .3rem}p.sub{color:#9aa0c8;margin:0 0 1.2rem}
+button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:.65rem 1.1rem;background:#62c9d9;color:#07161a;font-weight:700}
+button:hover{filter:brightness(1.1)}input,select{width:100%;padding:.65rem .8rem;border-radius:10px;border:1.5px solid #2b2f55;background:#151834;color:inherit}
+label{display:block;margin:.8rem 0 .3rem;color:#9aa0c8;font-size:.9rem}.card{background:#151834;border:1.5px solid #2b2f55;border-radius:16px;padding:1.2rem}
+.big{font-size:2.2rem;font-weight:800;text-align:center;margin:.6rem 0}.muted{color:#9aa0c8}.row{display:flex;gap:.6rem;flex-wrap:wrap}.row>*{flex:1}
+:focus-visible{outline:3px solid #62c9d9;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation-duration:6s!important;transition:none!important}}
+
+.scale{position:relative;height:12px;border-radius:99px;background:linear-gradient(90deg,#4fb7c9 0%,#62c9d9 25%,#8b7fd6 50%,#c96fb4 100%);margin:1.2rem 0 .4rem}
+.mark{position:absolute;top:-5px;width:4px;height:22px;background:#fff;border-radius:2px;left:0;transition:left .3s}
+.lab{display:flex;justify-content:space-between;font-size:.75rem;color:#9aa0c8}
+</style>
+</head>
+<body>
+<main><h1>BMI kalkulačka</h1><p class="sub">Orientační výpočet indexu tělesné hmotnosti pro dospělé.</p>
+<div class="card"><div class="row"><div><label for="w">Váha (kg)</label><input id="w" type="number" min="20" max="300" value="70" inputmode="decimal"></div>
+<div><label for="h">Výška (cm)</label><input id="h" type="number" min="100" max="250" value="175" inputmode="decimal"></div></div>
+<p class="big" id="v">—</p><p style="text-align:center;margin:0" id="c"></p>
+<div class="scale"><div class="mark" id="m"></div></div><div class="lab"><span>15</span><span>18,5</span><span>25</span><span>30</span><span>40</span></div></div>
+<p class="muted" style="font-size:.85rem">Jde jen o hrubý ukazatel. Není to lékařská rada a nehodí se pro děti ani těhotné.</p></main>
+<script>
+function calc(){const w=+document.getElementById("w").value,hc=+document.getElementById("h").value,v=document.getElementById("v"),c=document.getElementById("c"),m=document.getElementById("m");
+ if(!(w>0&&hc>0)){v.textContent="—";c.textContent="Zadej váhu a výšku.";return}
+ const b=w/Math.pow(hc/100,2);v.textContent=b.toFixed(1).replace(".",",");
+ c.textContent=b<18.5?"Podváha":b<25?"Normální váha":b<30?"Nadváha":"Obezita";
+ m.style.left="calc("+Math.max(0,Math.min(100,(b-15)/25*100))+"% - 2px)"}
+["w","h"].forEach(i=>document.getElementById(i).oninput=calc);calc();</script>
+</body>
+</html>
