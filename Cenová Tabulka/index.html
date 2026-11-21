@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cenová tabulka</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:#0e1020;color:#e8eaf6;font:16px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif;display:grid;place-items:center;padding:1.2rem}
+main{width:min(100%,560px)}h1{font-size:1.7rem;margin:0 0 .3rem}p.sub{color:#9aa0c8;margin:0 0 1.2rem}
+button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:.65rem 1.1rem;background:#62c9d9;color:#07161a;font-weight:700}
+button:hover{filter:brightness(1.1)}input,select{width:100%;padding:.65rem .8rem;border-radius:10px;border:1.5px solid #2b2f55;background:#151834;color:inherit}
+label{display:block;margin:.8rem 0 .3rem;color:#9aa0c8;font-size:.9rem}.card{background:#151834;border:1.5px solid #2b2f55;border-radius:16px;padding:1.2rem}
+.big{font-size:2.2rem;font-weight:800;text-align:center;margin:.6rem 0}.muted{color:#9aa0c8}.row{display:flex;gap:.6rem;flex-wrap:wrap}.row>*{flex:1}
+:focus-visible{outline:3px solid #62c9d9;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation-duration:6s!important;transition:none!important}}
+
+main{width:min(100%,900px)}.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.plan{background:#151834;border:1.5px solid #2b2f55;border-radius:16px;padding:1.4rem;display:flex;flex-direction:column;gap:.6rem;transition:transform .2s,border-color .2s}
+.plan:hover{transform:translateY(-6px);border-color:#62c9d9}.plan.top{border-color:#c96fb4;box-shadow:0 0 0 1px #c96fb4 inset}
+.plan h2{margin:0}.price{font-size:2.2rem;font-weight:800;margin:0}.price small{font-size:1rem;font-weight:400;color:#9aa0c8}
+.plan ul{padding-left:1.1rem;margin:0 0 .6rem;flex:1}.badge{align-self:flex-start;background:#c96fb4;color:#0e1020;font-size:.75rem;font-weight:700;padding:.15rem .6rem;border-radius:99px}
+</style>
+</head>
+<body>
+<main><h1>Cenová tabulka</h1><p class="sub">Ukázka rozložení pomocí CSS Gridu a hover efektů. Ceny jsou vymyšlené.</p>
+<div class="plans">
+<article class="plan"><h2>Základní</h2><p class="price">0 Kč<small> /měsíc</small></p><ul><li>1 projekt</li><li>Základní podpora</li><li>Komunitní fórum</li></ul><button>Vybrat</button></article>
+<article class="plan top"><span class="badge">Nejoblíbenější</span><h2>Plus</h2><p class="price">199 Kč<small> /měsíc</small></p><ul><li>10 projektů</li><li>Prioritní podpora</li><li>Vlastní doména</li></ul><button>Vybrat</button></article>
+<article class="plan"><h2>Pro</h2><p class="price">499 Kč<small> /měsíc</small></p><ul><li>Neomezené projekty</li><li>Podpora 24/7</li><li>Týmové účty</li></ul><button>Vybrat</button></article>
+</div></main>
+
+</body>
+</html>
