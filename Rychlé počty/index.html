@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rychlé počty</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:#0e1020;color:#e8eaf6;font:16px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif;display:grid;place-items:center;padding:1.2rem}
+main{width:min(100%,560px)}h1{font-size:1.7rem;margin:0 0 .3rem}p.sub{color:#9aa0c8;margin:0 0 1.2rem}
+button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:.65rem 1.1rem;background:#62c9d9;color:#07161a;font-weight:700}
+button:hover{filter:brightness(1.1)}input,select{width:100%;padding:.65rem .8rem;border-radius:10px;border:1.5px solid #2b2f55;background:#151834;color:inherit}
+label{display:block;margin:.8rem 0 .3rem;color:#9aa0c8;font-size:.9rem}.card{background:#151834;border:1.5px solid #2b2f55;border-radius:16px;padding:1.2rem}
+.big{font-size:2.2rem;font-weight:800;text-align:center;margin:.6rem 0}.muted{color:#9aa0c8}.row{display:flex;gap:.6rem;flex-wrap:wrap}.row>*{flex:1}
+:focus-visible{outline:3px solid #62c9d9;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation-duration:6s!important;transition:none!important}}
+
+.q{font-size:2.6rem;font-weight:800;text-align:center;margin:1rem 0;font-variant-numeric:tabular-nums}.top{display:flex;justify-content:space-between;color:#9aa0c8}
+.top b{color:#e8eaf6}.ans{text-align:center;font-size:1.4rem}
+</style>
+</head>
+<body>
+<main><h1>Rychlé počty</h1><p class="sub">Za 30 sekund vyřeš co nejvíc příkladů.</p>
+<div class="card"><div class="top"><span>Čas: <b id="t">30</b> s</span><span>Skóre: <b id="sc">0</b></span><span>Rekord: <b id="bs">0</b></span></div>
+<p class="q" id="q">?</p>
+<form id="f"><input class="ans" id="a" type="number" inputmode="numeric" autocomplete="off" aria-label="Odpověď" disabled></form>
+<p style="text-align:center;margin:1rem 0 0"><button id="go">Start</button></p><p class="muted" style="text-align:center;min-height:1.5em" id="msg"></p></div></main>
+<script>
+const st={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+let score=0,left=30,iv=0,ans=0,best=+st.get("rp")||0;bs.textContent=best;
+const r=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+function next(){const o=r(0,2);let x,y;
+ if(o===0){x=r(1,50);y=r(1,50);ans=x+y;q.textContent=`${x} + ${y}`}
+ else if(o===1){x=r(10,80);y=r(1,x);ans=x-y;q.textContent=`${x} − ${y}`}
+ else{x=r(2,12);y=r(2,12);ans=x*y;q.textContent=`${x} × ${y}`}
+ a.value="";a.focus()}
+function end(){clearInterval(iv);iv=0;a.disabled=true;go.disabled=false;go.textContent="Znovu";q.textContent="Konec";
+ if(score>best){best=score;st.set("rp",score);bs.textContent=best;msg.textContent=`Nový rekord: ${score}!`}else msg.textContent=`Ddosáhl jsi skóre ${score}.`}
+go.onclick=()=>{score=0;left=30;sc.textContent=0;t.textContent=30;msg.textContent="";a.disabled=false;go.disabled=true;next();
+ iv=setInterval(()=>{left--;t.textContent=left;if(left<=0)end()},1000)};
+f.onsubmit=e=>{e.preventDefault();if(!iv)return;if(a.value!==""&&+a.value===ans){score++;sc.textContent=score}next()};</script>
+</body>
+</html>
